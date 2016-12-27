@@ -1,3 +1,6 @@
 Hey there! -James
 
 Hello James -Jon
+
+Jon - I have freed up enough disc space for the latest version of xcode... do you think we should both upgrade to MacOS Sierra as well, for the ultimate upgrade experience?
+
