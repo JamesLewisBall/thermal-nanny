@@ -21,6 +21,11 @@
   <div class="actions">
     <%= f.submit "Log in" %>
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+<BR><BR><BR>
+Don't yet have a Thermal-Nanny account? Create one today!<BR>
+<%= link_to "Sign Up", new_user_registration_path %>
+
+<% end %>
+<BR><BR>
+<%=  render "devise/shared/links"  %>
