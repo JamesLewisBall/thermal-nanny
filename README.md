@@ -12,5 +12,6 @@ Multi Facility Temperature and Humidity Monitoring
 8. view the site by pointing your browser to `http://localhost:3000`
 
 Feb-26 - Linked AdminLTE into the template page to add a navbar on top.
+Mar-5 - Added in table for sites, and relationship table sites_users - still need to build rails associations
 
 
