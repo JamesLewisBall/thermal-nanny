@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :sites
+  resources :sites do
+    post :subscribe
+  end
+
   get 'home/index'
 
   devise_for :users

@@ -18,9 +18,12 @@
         <td><%= site.name %></td>
         <td><%= site.description %></td>
         <td><%= site.note %></td>
-        <td><%= link_to 'Show', site %></td>
+        <td><%= link_to 'Subscribe', site_subscribe_path(site), action: :subscribe  , method: :post %></td>
+	<td><%= link_to 'Show', site %></td>
         <td><%= link_to 'Edit', edit_site_path(site) %></td>
+        <% if current_user.globaladmin %>
         <td><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -1,12 +1,24 @@
 class SitesController < ApplicationController
   before_action :set_site, only: [:show, :edit, :update, :destroy]
+  
+  def subscribe
+    
+    
+    @siteuser = SiteUser.new 
+    @siteuser.user_id = current_user.id
+    @siteuser.site_id = params[:site_id]
+    @siteuser.save 
+ 
+ 
 
+  end
+  
   # GET /sites
   # GET /sites.json
   def index
     @sites = Site.all
   end
-
+  
   # GET /sites/1
   # GET /sites/1.json
   def show

@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="/AdminLTE/dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="/AdminLTE/dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/AdminLTE/documentation/style.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -26,7 +26,7 @@
     <![endif]-->
   </head>
   
-<body style="height: auto;" class="skin-blue fixed" data-spy="scroll" data-target="#scrollspy">
+<body style="height: auto;" class="skin-blue fixed layout-top-nav" data-spy="scroll" data-target="#scrollspy">
 <div style="height: auto;" class="wrapper">
 
 
@@ -43,8 +43,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
+        <!--li class="active"><a href="/home">NOPE <span class="sr-only">(current)</span></a></li>
+	-->
+	<li><a href="#">Link</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -66,9 +67,14 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %>  <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	    <%= current_user.email %>
+	    <% if current_user.globaladmin %>
+		- ADMIN
+	    <% end %>  
+	    <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
+            <li><a href="/sites">Sites</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
             <li class="divider"></li>
