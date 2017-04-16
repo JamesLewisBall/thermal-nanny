@@ -36,19 +36,25 @@ class SitesController < ApplicationController
   # POST /sites
   # POST /sites.json
   def create
-    @site = Site.new(site_params)
+    if current_user.globaladmin
+      @site = Site.new(site_params)
 
-    respond_to do |format|
-      if @site.save
-        format.html { redirect_to @site, notice: 'Site was successfully created.' }
-        format.json { render :show, status: :created, location: @site }
-      else
-        format.html { render :new }
+      respond_to do |format|
+        if @site.save
+          format.html { redirect_to @site, notice: 'Site was successfully created.' }
+          format.json { render :show, status: :created, location: @site }
+        else
+          format.html { render :new }
+          format.json { render json: @site.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to sites_url, :flash => { :error => 'Only administrators can create sites.'} }
         format.json { render json: @site.errors, status: :unprocessable_entity }
       end
     end
   end
-
   # PATCH/PUT /sites/1
   # PATCH/PUT /sites/1.json
   def update
@@ -66,10 +72,18 @@ class SitesController < ApplicationController
   # DELETE /sites/1
   # DELETE /sites/1.json
   def destroy
-    @site.destroy
-    respond_to do |format|
-      format.html { redirect_to sites_url, notice: 'Site was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_user.globaladmin
+      @site.destroy
+      respond_to do |format|
+        format.html { redirect_to sites_url, :flash => { :sucess => 'Site Deleted.'} }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        #format.html { redirect_to sites_url, success: 'You must be an administrator to delete sites!' }
+        format.html { redirect_to sites_url, :flash => { :error => 'You must be an administrator to delete sites!'}  }
+        format.json { head :no_content }
+      end
     end
   end
 

@@ -1,5 +1,12 @@
-<p id="notice"><%= notice %></p>
 
+
+<div class="box box-default site-edit-box">
+  <div class="box-header with-border">
+    <h3 class="box-title">
+      <span class="glyphicon glyphicon-home"></span> <strong><%= @site.name %></strong>
+    </h3>
+  </div>
+<BR>
 <p>
   <strong>Name:</strong>
   <%= @site.name %>
@@ -14,6 +21,17 @@
   <strong>Note:</strong>
   <%= @site.note %>
 </p>
+  
+<Table><tr><td>
+<%= link_to 'Edit', 
+edit_site_path(@site) ,
+class: "btn btn-block btn-default " %> 
+</td><td>
+<%= link_to 'Back', 
+sites_path ,
+class: "btn btn-block btn-default " %>
+</td></tr></table>
+</div>
 
-<%= link_to 'Edit', edit_site_path(@site) %> |
-<%= link_to 'Back', sites_path %>
+
+

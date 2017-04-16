@@ -96,10 +96,7 @@
     <%= yield %>
    
 
-<p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    
-</div>
+<%= render partial: "shared/flash_notices", flash: flash %>
 
     
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

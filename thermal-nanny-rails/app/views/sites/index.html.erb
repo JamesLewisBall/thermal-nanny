@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Sites</h1>
 
@@ -18,11 +17,25 @@
         <td><%= site.name %></td>
         <td><%= site.description %></td>
         <td><%= site.note %></td>
-        <td><%= link_to 'Subscribe', site_subscribe_path(site), action: :subscribe  , method: :post %></td>
+        <td>
+        <%= link_to 'Subscribe', 
+                site_subscribe_path(site), 
+                action: :subscribe  , 
+                method: :post , 
+                # class: "btn btn-block btn-default" 
+                class: "btn btn-block btn-primary btn-xs disabled"
+                %>
+        
+        </td>
 	<td><%= link_to 'Show', site %></td>
         <td><%= link_to 'Edit', edit_site_path(site) %></td>
         <% if current_user.globaladmin %>
-        <td><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', 
+                    site, 
+                    method: :delete, 
+                    data: { confirm: 'Are you sure?' }, 
+                    class: "btn btn-block btn-danger btn-xs "
+                    %></td>
         <% end %>
       </tr>
     <% end %>
@@ -31,4 +44,8 @@
 
 <br>
 
-<%= link_to 'New Site', new_site_path %>
+<%= 
+if current_user.globaladmin
+  link_to 'New Site', new_site_path
+end
+ %>
