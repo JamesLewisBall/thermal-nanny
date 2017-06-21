@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     post :subscribe
   end
 
+  get 'home/mysites'
   get 'home/index'
 
   devise_for :users

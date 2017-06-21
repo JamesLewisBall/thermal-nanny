@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170312031339) do
+ActiveRecord::Schema.define(version: 20170621012805) do
 
   create_table "site_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "site_id"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20170312031339) do
     t.boolean  "is_admin",   default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.boolean  "approved",   default: false
     t.index ["site_id"], name: "index_site_users_on_site_id", using: :btree
     t.index ["user_id"], name: "index_site_users_on_user_id", using: :btree
   end

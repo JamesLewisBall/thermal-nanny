@@ -17,6 +17,8 @@
         <td><%= site.name %></td>
         <td><%= site.description %></td>
         <td><%= site.note %></td>
+	<td><%= site.users.size
+		 %></td>
         <td>
         <%= link_to 'Subscribe', 
                 site_subscribe_path(site), 

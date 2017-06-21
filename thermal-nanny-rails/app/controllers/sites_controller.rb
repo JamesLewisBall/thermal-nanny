@@ -1,6 +1,11 @@
 class SitesController < ApplicationController
+  
   before_action :set_site, only: [:show, :edit, :update, :destroy]
   
+  def mysites
+    @sites = Site.all
+  end
+
   def subscribe
     
     
@@ -13,6 +18,7 @@ class SitesController < ApplicationController
 
   end
   
+
   # GET /sites
   # GET /sites.json
   def index
@@ -90,7 +96,9 @@ class SitesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_site
-      @site = Site.find(params[:id])
+      if params[:id] != 'mysites' then
+        @site = Site.find(params[:id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

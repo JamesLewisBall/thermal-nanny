@@ -11,22 +11,40 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+<div class="box box-primary">
+  <div class="box-header with-border">
+     <h3 class="box-title"><%= :name %></h3>
   </div>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-  </div>
+  <table>
+  <tr class="field">
+    <td><%= f.label :name %></td>
+    <td><%= f.text_field :name %></td>
+  </tr>
 
-  <div class="field">
-    <%= f.label :note %>
-    <%= f.text_field :note %>
-  </div>
+  <tr class="field">
+    <td><%= f.label :description %></td>
+    <td><%= f.text_field :description %></td>
+  </tr>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <tr class="field">
+    <td><%= f.label :note %></td>
+    <td><%= f.text_field :note %></td>
+  </tr>
+</table>
+<Table>
+
+  <tr class="actions">
+    <td><%= f.submit "Save", :class => "btn btn-block btn-default " %></td>
+<td>
+<%= link_to 'Cancel', 
+@site ,
+class: "btn btn-block btn-default " %> 
+</td><td>
+<%= link_to 'Back', 
+sites_path ,
+class: "btn btn-block btn-default " %>
+</td></tr></table>
+
+</div>
 <% end %>
