@@ -1,0 +1,67 @@
+
+<h1>My Sites</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Users</th>
+      <th></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @my_sites.each do |site| %>
+      <tr><td>
+	<div class="box box-default"><div class="box-header with-border">
+	<h3 class="box-title">
+	<% if site.is_current_user_admin?(current_user.id) %>
+        	<%= link_to site.name, edit_site_path(site) %>
+	<% else %>
+		<%= link_to site.name, site %>
+	<% end %>
+	</h3>
+	<div class="box-tools pull-right">
+		<button class="btn btn-box-tool" type="button" data-widget="collapse">
+		<i class="fa fa-minus">
+		</i>
+		</button>
+	</div>
+	</div>
+	<div class="box-body" style="">
+	  <%= site.description %>
+	</div></div>
+	
+	</div>
+	<td><table border=1><% site.users.each do |user| %>
+		<tr><td><%= user.id %></td><td><%= user.email %></td>
+		<td><%= site.is_current_user_admin?(user.id) %></td></tr>
+		<% end %></table></td>
+        <td>
+        <%= link_to 'Subscribe', 
+                site_subscribe_path(site), 
+                action: :subscribe  , 
+                method: :post , 
+                # class: "btn btn-block btn-default" 
+                class: "btn btn-block btn-default btn-xs "
+                %>
+        
+        </td>
+	<% if site.is_current_user_admin?(current_user.id) %>
+        	<td><%= link_to 'Edit', edit_site_path(site) %></td>
+	<% else %>
+		<td><%= link_to 'Show', site %></td>
+	<% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= 
+if current_user.globaladmin
+  link_to 'New Site', new_site_path
+end
+ %>

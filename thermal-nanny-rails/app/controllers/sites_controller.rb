@@ -3,7 +3,7 @@ class SitesController < ApplicationController
   before_action :set_site, only: [:show, :edit, :update, :destroy]
   
   def mysites
-    @sites = Site.all
+    @my_sites = Site.joins(:site_users).merge(SiteUser.where(user_id: current_user.id) )
   end
 
   def subscribe
@@ -23,6 +23,7 @@ class SitesController < ApplicationController
   # GET /sites.json
   def index
     @sites = Site.all
+    @my_sites = Site.joins(:site_users).merge(SiteUser.where(user_id: current_user.id) )
   end
   
   # GET /sites/1
